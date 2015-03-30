@@ -1,6 +1,10 @@
 # Activeadmin::Logins
 
-TODO: Write a gem description
+Logs login details after a user signs in, it stores IP address, user agent, country and city.
+Uses [GeoIP](https://github.com/cjheath/geoip) gem for retrieving the location.
+
+![](https://cdn.rawgit.com/kollegorna/activeadmin-logins/master/screenshot.png)
+
 
 ## Installation
 
@@ -20,7 +24,8 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+    rails generate active_admin:logins:install
+    rake db:migrate
 
 ## Contributing
 
