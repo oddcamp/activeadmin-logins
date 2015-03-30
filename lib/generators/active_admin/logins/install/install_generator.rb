@@ -13,8 +13,7 @@ module ActiveAdmin
 
         def create_user_login_file
           create_file "app/admin/user_login.rb" do
-            %Q{
-ActiveAdmin.register UserLogin do
+            %Q{ActiveAdmin.register UserLogin do
   config.batch_actions = false
   config.sort_order = 'created_at_desc'
 
@@ -41,7 +40,7 @@ ActiveAdmin.register UserLogin do
     end
     column(:filter) do |login|
       link_to(I18n.t("messages.filters.this_user", default: "Filter by this user"),
-        admin_logins_path({ q: { user_id_eq: login.user.id } }))
+        admin_user_logins_path({ q: { user_id_eq: login.user.id } }))
     end
   end
 
@@ -52,7 +51,6 @@ ActiveAdmin.register UserLogin do
   end
 
 end
-
             }
           end
         end
