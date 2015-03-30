@@ -1,3 +1,5 @@
+require 'geoip'
+
 class UserLoginWorker
   include Sidekiq::Worker
 
@@ -18,6 +20,6 @@ class UserLoginWorker
   private
 
   def geo_ip
-    GeoIP.new(Rails.root.join("data", "GeoLiteCity.dat"))
+    GeoIP.new Gem.find_files("**/GeoLiteCity.dat").first
   end
 end
