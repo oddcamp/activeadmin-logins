@@ -25,11 +25,11 @@ module ActiveAdmin
 
   # In order to hack the heroku issue with collations
   # We're sorting in rails and not on the DB level
-  filter :user, collection: proc { User.all.sort_by { |u| u.first_name.downcase } }
+  filter :user, collection: proc { User.all.sort_by { |u| u.email.downcase } }
 
   index do
-    column(:user, sortable: "users.last_name") do |login|
-      link_to login.user.full_name, admin_user_path(login.user)
+    column(:user, sortable: "users.email") do |login|
+      link_to login.user.email, admin_user_path(login.user)
     end
     column :ip
     column :user_agent
@@ -65,9 +65,6 @@ end
     UserLoginWorker.perform_async(self.id, request.remote_ip, request.user_agent)
   end
 
-  def full_name
-    "#{first_name} #{last_name}"
-  end
 
           RUBY
           end
