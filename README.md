@@ -26,6 +26,10 @@ Or install it yourself as:
 
     rails generate active_admin:logins:install
     rake db:migrate
+    
+## In case you haven't generated activeadmin user resource
+
+    rails g active_admin:resource user
 
 ## Contributing
 

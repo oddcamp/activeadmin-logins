@@ -1,4 +1,5 @@
 require 'geoip'
+require 'sidekiq'
 
 class UserLoginWorker
   include Sidekiq::Worker
