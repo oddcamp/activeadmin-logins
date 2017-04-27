@@ -56,7 +56,13 @@ end
         end
 
         def inject_into_user_model
-          inject_into_file 'app/models/user.rb', after: "class User < ActiveRecord::Base\n" do <<-'RUBY'
+          if Rails.version.to_i < 5
+            class_line = "class User < ActiveRecord::Base"
+          else
+            class_line = "class User < ApplicationRecord"
+          end
+
+          inject_into_file 'app/models/user.rb', after: "#{class_line}\n" do <<-'RUBY'
 
   has_many :user_logins, dependent: :destroy
 
